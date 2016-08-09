@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+    userservice:
+        build:
+            context: UserService/
+        networks:
+            - service-hub
+    
+    website:
+        build:
+            context: Website/
+        ports:
+            - "5000:5000"
+        networks:
+            - service-hub
+
+networks:
+    service-hub:
+        driver: bridge
